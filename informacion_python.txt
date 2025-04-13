@@ -1,0 +1,36 @@
+CURSOS:
+	Logica de programação - https://www.youtube.com/watch?v=XzkZO2qjgec
+	Curso Completo de Python - do Zero ao Avançado (Masterclass) ---> https://www.youtube.com/watch?v=-VeVq64Fgw0&t=27523s
+
+LER ARQUIVOS:
+	Ler varios arquivos de uma pasta: https://www.youtube.com/watch?v=LIfscd9SNLo
+
+STREAMLIT:
+	Tutorial input: https://www.youtube.com/watch?v=6FqMK7JtVyk
+
+CONVERTIR FORMATOS NUMEROS EXCEL:
+	https://youtu.be/yQIV7fMCP0o?si=yOqYVbuotjM2UTjY
+
+LAMGDA SIMPLE (TIPO DE DADOS)
+	https://www.youtube.com/watch?v=MVd1cs7TDgA
+
+POSIÇÕES NA TELA ROBOT
+	https://www.youtube.com/watch?v=h9vEE1KWsI4
+
+SUBSTITUIR VALORES EM UM DATAFRAME
+	https://www.google.com/search?q=trocar+uma+string+em+um+dataframe+pandas&oq=trocar+ua+strin+em+um+&gs_lcrp=EgZjaHJvbWUqCQgDECEYChigATIGCAAQRRg5MgkIARAhGAoYoAEyCQgCECEYChigATIJCAMQIRgKGKABMgkIBBAhGAoYoAEyCQgFECEYChigAdIBCTE2ODUwajBqN6gCALACAA&sourceid=chrome&ie=UTF-8#fpstate=ive&vld=cid:8793d026,vid:VrLQQHbpoRc,st:34 
+
+BAIXAR VARIOS ARQUIVOS DONWLO
+	https://youtu.be/qx2LGtKzjxk?si=jEF9sh2gy9nje4bI
+
+AUTOMAÇÃO SELENIUM
+	https://youtu.be/71ECrViH_Ng?si=tRCnjzwXyO8VqrAJ
+
+MOVER ARQUIVOS DE PASTAS
+	https://youtu.be/1suBf-2O-gU?si=9TPDU21fljAHYUAa
+
+LER ARQUIVOS XML
+	https://www.youtube.com/watch?v=GTqcegHqewY
+
+EXTRAIR VALORES E TAG XML
+	https://www.youtube.com/watch?v=GTqcegHqewY
