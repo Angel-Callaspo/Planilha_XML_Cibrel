@@ -64,7 +64,7 @@ with st.sidebar:
         todas_nf.append(valor)
 
     for imp_icms in lista_icms: # Extrair lista com valores depurados dos imposto notas fiscais "vICMS"
-        icms_valor = imp_icms[8:-5]
+        icms_valor = imp_icms[8:-2]
         todos_icms.append(icms_valor)
 
     for imp_pis in lista_pis: # Extrair lista com valores depurados dos imposto notas fiscais "vPIS"
