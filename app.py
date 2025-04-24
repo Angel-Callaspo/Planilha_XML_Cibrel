@@ -1,7 +1,6 @@
 import pandas as pd
 import numpy as np
 from matplotlib import pyplot as plt
-import mypy as py
 import plotly.express as px
 from pathlib import Path
 import xmltodict as xl
@@ -81,6 +80,6 @@ imposto_ml_cibrel = {'N° de Nota':todas_nf,
                      'PIS':todos_pis,
                      'COFIN':todos_cofin}
 
-st.title(":red[Tabela de imposto Mercado Livre]")
+st.title(":red[Tabela de imposto Mercado Livre <FULL>]")
 df_imposto = pd.DataFrame(imposto_ml_cibrel)
 st.dataframe(df_imposto)

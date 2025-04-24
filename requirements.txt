@@ -3,6 +3,5 @@ numpy
 scipy
 matplotlib
 plotly.express
-pathlibpip
+pathlib
 streamlit
-xmltodict
