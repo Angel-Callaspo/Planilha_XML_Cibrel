@@ -5,6 +5,4 @@ matplotlib
 plotly.express
 pathlib
 streamlit
-streamlit
 xmltodict
-
