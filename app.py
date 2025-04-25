@@ -38,7 +38,7 @@ with st.sidebar:
                     lista_aux.append(lista_tag)
             
             for lista_tag in lista_nota: # Extrair lista com impostos das notas fiscais "vICMS"
-                if "vICMS" in lista_tag:
+                if "vICMS>" in lista_tag:
                     lista_aux_icms.append(lista_tag)
                 icms=str(lista_aux_icms[-4:-3])
             lista_icms.append(icms)
@@ -54,6 +54,9 @@ with st.sidebar:
                     lista_aux_cofin.append(lista_tag)
                 cofin=str(lista_aux_cofin[-2:-1])
             lista_cofin.append(cofin)
+    
+    st.write(lista_aux_icms)
+    st.write(lista_icms)
 
     for index in range(0,len(lista_aux),4): # Extrair lista com valores depurados das notas fiscais "nNF"
         valor = lista_aux[index]
