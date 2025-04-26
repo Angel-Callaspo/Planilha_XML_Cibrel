@@ -14,15 +14,14 @@ lista_aux=[]
 todas_nf=[]
 lista_aux_icms=[]
 lista_nota =[]
-notas = []
-lista_icms=[]
+lista_iten = []
 todos_icms=[]
 lista_aux_pis=[]
-lista_pis=[]
 todos_pis=[]
 lista_aux_cofin=[]
-lista_cofin=[]
 todos_cofin=[]
+lista_valor_notas = []
+todos_valor_nota=[]
 
 with st.sidebar:
     st.title('APP CIBREL: Carregue Nf_XML')
@@ -32,50 +31,68 @@ with st.sidebar:
     for i in notas_xml: # Extrair lista com numeros das notas fiscais "nNF"
         if i is not None:
             nota = i.read().decode("utf-8")
-            lista_nota = nota.split('<')
-            for lista_tag in lista_nota: 
-                if "nNF" in lista_tag:
-                    lista_aux.append(lista_tag)
+            nota_separada = nota.split("<")
             
-            for lista_tag in lista_nota: # Extrair lista com impostos das notas fiscais "vICMS"
-                if "vICMS>" in lista_tag:
-                    lista_aux_icms.append(lista_tag)
-                icms=str(lista_aux_icms[-4:-3])
-            lista_icms.append(icms)
+            lista_nota = nota.split('total')
+            imposto_notas = str(lista_nota[1:2])
+            separa_imposto = imposto_notas.split("<")
+            
+            num_iten = nota.count("det nItem")
 
-            for lista_tag in lista_nota: # Extrair lista com impostos das notas fiscais "vPIS"
-                if "vPIS" in lista_tag:
-                    lista_aux_pis.append(lista_tag)
-                pis=str(lista_aux_pis[-2:-1])
-            lista_pis.append(pis)
+            for lista_tag in nota_separada: 
+              if "nNF" in lista_tag:
+                lista_aux.append(lista_tag)
+            
+            for imposto in separa_imposto:
+                if "vICMS>" in imposto:
+                    lista_aux_icms.append(imposto)
 
-            for lista_tag in lista_nota: # Extrair lista com impostos das notas fiscais "vCOFINS"
-                if "vCOFINS" in lista_tag:
-                    lista_aux_cofin.append(lista_tag)
-                cofin=str(lista_aux_cofin[-2:-1])
-            lista_cofin.append(cofin)
+            for imposto in separa_imposto:
+                if "vPIS>" in imposto:
+                    lista_aux_pis.append(imposto)
 
+            for imposto in separa_imposto:
+                if "vCOFINS>" in imposto:
+                    lista_aux_cofin.append(imposto)
+            
+            for imposto in separa_imposto:
+                if "vNF>" in imposto:
+                    lista_valor_notas.append(imposto)
+
+        lista_iten.append(num_iten)
+        
     for index in range(0,len(lista_aux),4): # Extrair lista com valores depurados das notas fiscais "nNF"
         valor = lista_aux[index]
         valor = valor[4:]
         todas_nf.append(valor)
 
-    for imp_icms in lista_icms: # Extrair lista com valores depurados dos imposto notas fiscais "vICMS"
-        icms_valor = imp_icms[8:-2]
-        todos_icms.append(icms_valor)
+    for imp_icms in lista_aux_icms:
+        if "/vICMS>" not in imp_icms:
+            icms_valor = imp_icms[6:]
+            todos_icms.append(icms_valor)
 
-    for imp_pis in lista_pis: # Extrair lista com valores depurados dos imposto notas fiscais "vPIS"
-        pis_valor = imp_pis[7:-2]
-        todos_pis.append(pis_valor)
+    for imp_pis in lista_aux_pis:
+        if "/vPIS>" not in imp_pis:
+            pis_valor = imp_pis[5:]
+            todos_pis.append(pis_valor)
 
-    for imp_cofin in lista_cofin: # Extrair lista com valores depurados dos imposto notas fiscais "vPIS"
-        cofin_valor = imp_cofin[10:-2]
-        todos_cofin.append(cofin_valor)
+    for imp_cofin in lista_aux_cofin:
+        if "/vCOFINS>" not in imp_cofin:
+            cofin_valor = imp_cofin[8:]
+            todos_cofin.append(cofin_valor)
 
-imposto_ml_cibrel = {'N° de Nota':todas_nf,
+    for valor_nota in lista_valor_notas:
+        if "/vNF>" not in valor_nota:
+            valor_nf = valor_nota[4:]
+            todos_valor_nota.append(valor_nf)
+
+
+imposto_ml_cibrel = {'N° Nfe':todas_nf,
+                     'N° item':lista_iten,
                      'ICMS':todos_icms,
                      'PIS':todos_pis,
-                     'COFIN':todos_cofin}
+                     'COFIN':todos_cofin,
+                     'Valor Nfe':todos_valor_nota}
 
 st.title(":red[Tabela de imposto Mercado Livre <FULL>]")
 df_imposto = pd.DataFrame(imposto_ml_cibrel)
