@@ -101,7 +101,7 @@ imposto_ml_cibrel = {'N° Nfe':todas_nf,
                      'COFIN\n(R$)':todos_cofin,
                      'Valor Nfe\n(R$)':todos_valor_nota}
 
-st.title(":blue[CIBREL:] :red[Tabela de Imposto]") 
+st.title(":blue[CIBREL:] :red[Tabela de Impostos]") 
 df_imposto = pd.DataFrame(imposto_ml_cibrel)
 st.dataframe(df_imposto)
 
