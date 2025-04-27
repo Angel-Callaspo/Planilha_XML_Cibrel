@@ -6,4 +6,4 @@ plotly.express
 pathlib
 streamlit
 xmltodict
-io
+XlsxWriter
