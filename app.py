@@ -3,6 +3,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 import plotly.express as px
 import streamlit as st
+import io
 
 st.set_page_config(
     page_title="Extrair_imposto_nf_XML",
@@ -22,6 +23,8 @@ lista_aux_cofin=[]
 todos_cofin=[]
 lista_valor_notas = []
 todos_valor_nota=[]
+
+#st.logo()
 
 with st.sidebar:
     st.title('APP CIBREL: Carregue Nf_XML')
@@ -88,12 +91,30 @@ with st.sidebar:
 
 
 imposto_ml_cibrel = {'N° Nfe':todas_nf,
-                     'N° item':lista_iten,
-                     'ICMS':todos_icms,
-                     'PIS':todos_pis,
-                     'COFIN':todos_cofin,
-                     'Valor Nfe':todos_valor_nota}
+                     'N° item\n(und)':lista_iten,
+                     'ICMS\n(R$)':todos_icms,
+                     'PIS\n(R$)':todos_pis,
+                     'COFIN\n(R$)':todos_cofin,
+                     'Valor Nfe\n(R$)':todos_valor_nota}
 
-st.title(":red[Tabela de imposto Mercado Livre <FULL>]")
+st.title(":blue[CIBREL:] :red[Extrair imposto XML_Nfe --> xlsx]") 
 df_imposto = pd.DataFrame(imposto_ml_cibrel)
 st.dataframe(df_imposto)
+
+st.write(f'Quantidade de Notas carregadas: <:green[{len(df_imposto)} Nfe]>')
+
+
+def convert_for_download(df):
+    output = io.BytesIO()
+    with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
+        df.to_excel(writer, index=False)
+    processed_data = output.getvalue()
+    return processed_data
+
+
+st.download_button(label="Baixar Excel",
+                   data=convert_for_download(df_imposto),
+                   file_name="imposto_cibrel.xlsx",
+                   mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                   type="primary")
+
