@@ -1,9 +1,11 @@
 import pandas as pd
 import numpy as np
+from pathlib import Path
 from matplotlib import pyplot as plt
 import plotly.express as px
 import streamlit as st
 import io
+from PIL import Image
 
 st.set_page_config(
     page_title="Extrair_imposto_nf_XML",
@@ -24,7 +26,9 @@ todos_cofin=[]
 lista_valor_notas = []
 todos_valor_nota=[]
 
-#st.logo()
+path= Path("LOGO.png")
+imagem = Image.open(path) 
+st.logo(image=imagem, size="large")
 
 with st.sidebar:
     st.title('APP CIBREL: Carregue Nf_XML')
@@ -97,7 +101,7 @@ imposto_ml_cibrel = {'N° Nfe':todas_nf,
                      'COFIN\n(R$)':todos_cofin,
                      'Valor Nfe\n(R$)':todos_valor_nota}
 
-st.title(":blue[CIBREL:] :red[Extrair imposto XML_Nfe --> xlsx]") 
+st.title(":blue[CIBREL:] :red[Tabela de Imposto]") 
 df_imposto = pd.DataFrame(imposto_ml_cibrel)
 st.dataframe(df_imposto)
 
