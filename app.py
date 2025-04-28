@@ -95,17 +95,17 @@ with st.sidebar:
 
 
 imposto_ml_cibrel = {'N° Nfe':todas_nf,
-                     'N° item\n(und)':lista_iten,
+                     'N° item':lista_iten,
                      'ICMS\n(R$)':todos_icms,
                      'PIS\n(R$)':todos_pis,
                      'COFIN\n(R$)':todos_cofin,
                      'Valor Nfe\n(R$)':todos_valor_nota}
 
-st.title(":blue[CIBREL:] :red[Tabela de Impostos Nfe]") 
+st.title(":blue[CIBREL:] :red[Tabela de Impostos Nf]") 
 df_imposto = pd.DataFrame(imposto_ml_cibrel)
 st.dataframe(df_imposto)
 
-st.write(f'Quantidade de Notas carregadas: <:green[{len(df_imposto)} Nfe]>')
+st.write(f'Quantidade de Notas carregadas: <:green[{len(df_imposto)} Nf]>')
 
 
 def convert_for_download(df):
