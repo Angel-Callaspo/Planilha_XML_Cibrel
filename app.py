@@ -101,7 +101,7 @@ imposto_ml_cibrel = {'N° Nfe':todas_nf,
                      'COFIN\n(R$)':todos_cofin,
                      'Valor Nfe\n(R$)':todos_valor_nota}
 
-st.title(":blue[CIBREL:] :red[Tabela de Impostos]") 
+st.title(":blue[CIBREL:] :red[Tabela de Impostos Nfe]") 
 df_imposto = pd.DataFrame(imposto_ml_cibrel)
 st.dataframe(df_imposto)
 
@@ -118,7 +118,7 @@ def convert_for_download(df):
 
 st.download_button(label="Baixar Excel",
                    data=convert_for_download(df_imposto),
-                   file_name="imposto_cibrel.xlsx",
+                   file_name="angel_imposto_cibrel.xlsx",
                    mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
                    type="primary")
 
