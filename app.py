@@ -93,13 +93,17 @@ with st.sidebar:
             valor_nf = valor_nota[4:]
             todos_valor_nota.append(valor_nf)
 
+icms = [float(elemento) for elemento in todos_icms]
+pis = [float(elemento) for elemento in todos_pis]
+cofin = [float(elemento) for elemento in todos_cofin]
+val_nota = [float(elemento) for elemento in todos_valor_nota]
 
 imposto_ml_cibrel = {'N° Nfe':todas_nf,
                      'N° item':lista_iten,
-                     'ICMS\n(R$)':todos_icms,
-                     'PIS\n(R$)':todos_pis,
-                     'COFIN\n(R$)':todos_cofin,
-                     'Valor Nfe\n(R$)':todos_valor_nota}
+                     'ICMS\n(R$)':icms,
+                     'PIS\n(R$)':pis,
+                     'COFIN\n(R$)':cofin,
+                     'Valor Nfe\n(R$)':val_nota}
 
 st.title(":blue[CIBREL:] :red[Tabela de Impostos Nf]") 
 df_imposto = pd.DataFrame(imposto_ml_cibrel)
